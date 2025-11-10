@@ -1,4 +1,4 @@
-# TODO : Kerjakan disini (fitur1)
+# TODO : Kerjakan disini (Fitur 1)
 from datetime import datetime, timedelta
 
 def validasi_tanggal(tanggal_input):
@@ -10,4 +10,4 @@ def validasi_tanggal(tanggal_input):
     except:
         return None
 
-# TODO : Kerjakan disini (fitur5)
+# TODO : Kerjakan disini (Fitur 5)

@@ -9,14 +9,19 @@ class Pohon:
         self.jenis = jenis
         self.lokasi = lokasi
         self.tanggal_tanam = tanggal_tanam
-        # TODO Kerjakan disini (fitur6)
+        # TODO (Fitur 6)
+        self.kunjungan = []
 
-    # TODO : Kerjakan disini (fitur2)
+    # TODO : Kerjakan disini (Fitur 2)
 
-    # TODO : Kerjakan disini (fitur2)
+    # TODO : Kerjakan disini (Fitur 2)
 
-    # TODO : Kerjakan disini (fitur6)
+    # TODO (Fitur 6)
+    def tambah_kunjungan(self, tanggal_kunjungan, kondisi):
+        self.kunjungan.append()
+        "tanggal": tanggal_kunjungan
+        "kondisi": kondisi
+
+    # TODO : Kerjakan disini (Fitur 7)
     
-    # TODO : Kerjakan disini (fitur7)
-    
-    # TODO : Kerjakan disini (fitur7)
+    # TODO : Kerjakan disini (Fitur 7)
