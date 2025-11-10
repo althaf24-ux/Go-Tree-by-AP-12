@@ -1,6 +1,7 @@
 from database import DatabasePohon
 from pohon import Pohon
 from utils import validasi_tanggal
+from datetime import datetime, timedelta
 
 db = DatabasePohon()
 
@@ -41,13 +42,37 @@ while True:
             sub = input("Pilih submenu (a/b/kembali): ")
             if sub == "a":
                 try:
-                    # TODO : Kerjakan disini (Fitur 3)
+                    # (fitur3)
+                    id_input = int(input("Masukkan ID pohon: "))
+                    id = next((pohon for pohon in db.data if pohon.id == id_input), None)
+                    if id :
+                        tanggal_input = input("Masukkan tanggal (YYYY-MM-DD): ")
+                        tanggal = datetime.strptime(tanggal_input, "%Y-%m-%d").date()
+                        if tanggal >= pohon.tanggal_tanam:
+                            umur = (tanggal - pohon.tanggal_tanam).days
+                            print(f"Umur pohon: {umur} hari")
+                        else:
+                            print("❌ Tanggal harus setelah tanggal penanaman pohon.")
+                    else:
+                        print("❌ ID pohon tidak ditemukan.")
                 except:
                     print("❌ Input tidak valid.")
 
             elif sub == "b":
                 try:
-                    # TODO : Kerjakan disini (Fitur 3)
+                    # (fitur3)
+                    id_input = int(input("Masukkan ID pohon: "))
+                    id = next((pohon for pohon in db.data if pohon.id == id_input), None)
+                    if id :
+                        umur = int(input("Masukkan umur pohon (dalam hari): "))
+                        if umur >= 0:
+                            tanggal_tanam = pohon.tanggal_tanam
+                            tanggal_hitung = tanggal_tanam + timedelta(days=umur)
+                            print(f"Tanggal penanaman pohon: {tanggal_hitung}")
+                        else:
+                            print("❌ Umur tidak boleh negatif.")
+                    else:
+                        print("❌ ID pohon tidak ditemukan.")
                 except:
                     print("❌ Input tidak valid.")
             else:
