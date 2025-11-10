@@ -41,13 +41,21 @@ while True:
             sub = input("Pilih submenu (a/b/kembali): ")
             if sub == "a":
                 try:
-                    # TODO : Kerjakan disini (fitur3)
+                    # (fitur3)
+                    tanggal = input("Masukkan tanggal (YYYY-MM-DD): ")
+                    umur = db.cek_umur_dari_tanggal(tanggal)
+                    print(f"Umur pohon: {umur} tahun")
+
                 except:
                     print("❌ Input tidak valid.")
 
             elif sub == "b":
                 try:
-                    # TODO : Kerjakan disini (fitur3)
+                    # (fitur3)
+                    umur = int(input("Masukkan umur pohon (dalam tahun): "))
+                    tanggal = db.cek_tanggal_dari_umur(umur)
+                    print(f"Tanggal penanaman pohon: {tanggal}")
+
                 except:
                     print("❌ Input tidak valid.")
             else:
