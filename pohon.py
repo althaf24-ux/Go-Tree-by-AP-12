@@ -18,10 +18,10 @@ class Pohon:
 
     # TODO (Fitur 6)
     def tambah_kunjungan(self, tanggal_kunjungan, kondisi):
-        self.kunjungan.append()
-        "tanggal": tanggal_kunjungan
+        self.kunjungan.append({
+        "tanggal": tanggal_kunjungan,
         "kondisi": kondisi
-
+    })
     # TODO : Kerjakan disini (Fitur 7)
     
     # TODO : Kerjakan disini (Fitur 7)
