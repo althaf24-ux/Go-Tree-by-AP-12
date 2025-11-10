@@ -78,11 +78,34 @@ while True:
             else:
                 continue
 
-    elif pilihan == "3":
+    elif pilihan == "4":
         # TODO : Kerjakan disini (Fitur 4)
 
-    elif pilihan == "4":
+    elif pilihan == "3":
         # TODO : Kerjakan disini (Fitur 5)
+        if not db.data:
+            print("❌ Belum ada data pohon untuk dianalisis.")
+            continue
+
+        print("\n🔎 Analisis Pemeliharaan Pohon")
+        pohon.tampilkan()
+
+        try:
+            id_input = int(input("Masukkan ID pohon yang ingin dianalisis: "))
+            pohon = None
+            for p in db.data:
+                if p.id == id_input:
+                    pohon = p
+                    break
+
+            if pohon is None:
+                print("❌ ID pohon tidak ditemukan.")
+                continue
+
+            pohon.analisis_pemeliharaan()
+
+        except ValueError:
+            print("❌ Input ID tidak valid.")
 
     elif pilihan == "5":
         # TODO (Fitur 6)
