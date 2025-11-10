@@ -20,7 +20,7 @@ while True:
     pilihan = input("Pilih menu: ")
 
     if pilihan == "1":
-        # TODO : Kerjakan disini (fitur1)
+        # TODO : Kerjakan disini (Fitur 1)
         print("\n📥 Tambah Data Pohon")
         jenis = input("Jenis Pohon : ")
         lokasi = input("Tempat Penanaman Pohon : ")
@@ -34,8 +34,7 @@ while True:
 
 
     elif pilihan == "2":
-        # TODO : Kerjakan disini (fitur2)                   
-
+        # TODO : Kerjakan disini (Fitur 2)
         else:
             print("\n🔍 Submenu:")
             print("a. Cek umur dari tanggal")
@@ -56,7 +55,6 @@ while True:
                             print("❌ Tanggal harus setelah tanggal penanaman pohon.")
                     else:
                         print("❌ ID pohon tidak ditemukan.")
-
                 except:
                     print("❌ Input tidak valid.")
 
@@ -75,23 +73,57 @@ while True:
                             print("❌ Umur tidak boleh negatif.")
                     else:
                         print("❌ ID pohon tidak ditemukan.")
-                   
                 except:
                     print("❌ Input tidak valid.")
             else:
                 continue
 
     elif pilihan == "3":
-        # TODO : Kerjakan disini (fitur4)
+        # TODO : Kerjakan disini (Fitur 4)
 
     elif pilihan == "4":
-        # TODO : Kerjakan disini (fitur5)
+        # TODO : Kerjakan disini (Fitur 5)
 
     elif pilihan == "5":
-        # TODO : Kerjakan disini (fitur6)
+        # TODO (Fitur 6)
+        print("\n📥 Input Kondisi & Kunjungan")
+        db.tambah_data_pohon()
+
+        if not db.data:
+            continue
+
+        try:
+            id_pohon = int(input("Masukkan ID pohon yang dikunjungi: "))
+            pohon_terpilih = None
+            for pohon in db.data:
+                if pohon.id == id_pohon:
+                    pohon_terpilih = pohon
+                    break
+
+            if pohon_terpilih is None:
+                print("❌ ID pohon tidak ditemukan.")
+                continue
+
+            tanggal_input = input("Masukkan tanggal kunjungan (YYYY-MM-DD): ")
+            tanggal = validasi_tanggal(tanggal_input)
+            if tanggal is None:
+                print("❌ Tanggal tidak valid atau melewati hari ini.")
+                continue
+
+            kondisi = input("Masukkan kondisi pohon (subur/kering/layu): ")
+            if kondisi not in ["subur", "kering", "layu"]:
+                print("❌ Kondisi tidak valid. Gunakan: subur / kering / layu.")
+                continue
+
+            pohon_terpilih.tambah_kunjungan(tanggal, kondisi)
+        except ValueError:
+            print("❌ ID pohon tidak ditemukan.")
+        
+        except Exception:
+            print("❌ Terjadi kesalahan input.")
 
     elif pilihan == "6":
-        # TODO : Kerjakan disini (fitur7)
+        # TODO : Kerjakan disini (Fitur 7)
         
     elif pilihan == "0":
         print("👋 Terima kasih telah menjaga lingkungan bersama Go Tree!")
