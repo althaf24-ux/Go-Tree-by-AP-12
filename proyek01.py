@@ -1,50 +1,48 @@
-# buat tampilan data kunjungan
-class Kunjungan:
-    def __init__(self,  id, kelamin, lokasi, tanggal_pengunjungan):
-        self.id = id
-        self.kelamin = kelamin
-        self.lokasi = lokasi
-        self.tanggal_pengunjungan = tanggal_pengunjungan
-    def Tampilkan_data(self, nomor):
-        print(f"| {nomor:<3} | {self.id:<15} | {self.kelamin:<5} | {self.lokasi:<20} | {self.tanggal_pengunjungan:<15} |")
 
-class Pohon(Kunjungan):
-    def __init__(self, id, kelamin, lokasi, tanggal_pengunjungan, kondisi_pohon):
-        super().__init__(id, kelamin, lokasi, tanggal_pengunjungan)
-        self.kondisi_pohon = kondisi_pohon
 
-    def KondisiPohon(self, kondisi_pohon):
-        if self.kondisi_pohon.lower() == "subur":
-            return "Sehat"
-        elif self.kondisi_pohon.lower() == "layu" and "kering":
-            return "Tidak Sehat"    
-        else:
-            return "Unknown"
-        
-        
-    def Tampilkan_data(self, nomor):
-        super().Tampilkan_data(nomor)
-        print(f"    >> {self.KondisiPohon(self.kondisi_pohon)}")
-        
-data_kunjungan = []
-print("=== SISTEM DATA KUNJUNGAN POHON ===\n")
-jumlah = int(input("masukkan jumlah kunjungan: "))
-for kunjungan in range(jumlah):
-    print(f'\nKunjungan ke --{kunjungan+1}--')
-    id = input("ID Pengunjung: ")
-    kelamin = input("Jenis Kelamin (L/P): ")
-    lokasi = input("Lokasi Pengunjungan: ")
-    tanggal_pengunjungan = input("Tanggal Pengunjungan (DD-MM-YYYY): ")
-    kondisi_pohon = input("Kondisi Pohon (Subur/Layu/Kering): ")
-    kunjungan = Pohon(id, kelamin, lokasi, tanggal_pengunjungan, kondisi_pohon)
-    data_kunjungan.append(kunjungan)
+def Kunjungan(id, jenis_kelamin, lokasi, kondisi, tanggal, pesan):
+    return {
+        "id": id,
+        "jenis_kelamin": jenis_kelamin,
+        "lokasi": lokasi,
+        "kondisi": kondisi,
+        "tanggal": tanggal,
+        "pesan": pesan
+    }
 
-print("\n=== DAFTAR KUNJUNGAN POHON ===\n")
-print("========================================================================================")   
-print("| No | ID Pengunjung  | JK   | Lokasi              | Tanggal          |")
-print("========================================================================================")
-for i, kunjungan in enumerate(data_kunjungan, start=1):
-    kunjungan.Tampilkan_data(i)
-print("========================================================================================")
+def Kunjungan_id(id):
+    return f"KJ-{id:03d}"
 
+def Kunjungan_jenis_kelamin(jenis_kelamin):
+    jenis_kelamin = jenis_kelamin.lower()
+    if jenis_kelamin in ['l', 'pria', 'laki-laki']:
+        return 'Laki-laki'
+    elif jenis_kelamin in ['p', 'wanita', 'perempuan']:
+        return 'Perempuan'
+    else:
+        return 'Tidak Diketahui'
+    
+def Kunjungan_lokasi(lokasi):
+    lokasi = lokasi.title()
+    return lokasi
+
+def Kunjungan_kondisi(kondisi):
+    kondisi = kondisi.lower()
+    if kondisi in ['sehat', 'baik']:
+        return 'Sehat'
+    elif kondisi in ['sakit', 'tidak sehat']:
+        return 'Sakit'
+    else:
+        return 'Tidak Diketahui'
+    
+def Kunjungan_tanggal(tanggal):
+    return tanggal
+
+def Kunjungan_pesan(pesan):
+    return pesan
+
+
+def tampilkan_kunjungan(kunjungan):
+    print(f"{'ID':<10} {'Jenis Kelamin':<15} {'Lokasi':<20} {'Kondisi':<10} {'Tanggal':<15} {'Pesan':<30}")
+    print("-" * 100)
 
