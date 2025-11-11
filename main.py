@@ -80,6 +80,17 @@ while True:
 
     elif pilihan == "4":
         # TODO : Kerjakan disini (Fitur 4)
+        print("\n🗑️ HAPUS DATA POHON")
+        try:
+            id_hapus = int(input("Masukkan ID pohon yang ingin dihapus: "))
+            berhasil = db.hapus_pohon(id_hapus)
+
+            if berhasil:
+                print("✅ Data pohon berhasil dihapus!")
+            else:
+                print("❌ ID tidak ditemukan dalam database.")
+        except:
+            print("❌ Input harus berupa angka!")
 
     elif pilihan == "3":
         # TODO : Kerjakan disini (Fitur 5)

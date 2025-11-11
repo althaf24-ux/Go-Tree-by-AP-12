@@ -10,3 +10,9 @@ class DatabasePohon:
     # TODO : Kerjakan disini (Fitur 2)
 
     # TODO : Kerjakan disini (Fitur 4)
+    def hapus_pohon(self, id_pohon):
+        for pohon in self.data:
+            if pohon.id == id_pohon:
+                self.data.remove(pohon)
+                return True
+        return False
